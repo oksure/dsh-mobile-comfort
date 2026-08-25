@@ -1,0 +1,25 @@
+{
+  "name": "@oksure/dsh-client-ui-mobile-comfort",
+  "version": "0.1.0",
+  "description": "Touch-device comfort fixes for the dsh web client: suppress tap-synthesized tooltip ghosts and remove double-tap-zoom ambiguity from controls.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  }
+}

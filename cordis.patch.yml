@@ -1,0 +1,5 @@
+# The mobile-comfort bundle patch: touch-device comfort sheet over the web UI.
+# Injects a browser-only client plugin; no host-side rows.
+- insert:
+    - id: ui-mobile-comfort
+      name: '@oksure/dsh-client-ui-mobile-comfort'
