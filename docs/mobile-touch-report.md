@@ -1,6 +1,6 @@
 # Mobile/touch: tooltips linger after tapping sidebar controls; rapid taps zoom instead of clicking
 
-> Draft for deepseek-ai/deepseek-harness Discussions (General category).
+> Posted upstream: https://github.com/deepseek-ai/deepseek-harness/discussions/4520
 > All findings verified against 0.1.1-rc.2 with Playwright (Chromium + WebKit engines, iPhone-class touch emulation, 390x844).
 
 ## Summary
