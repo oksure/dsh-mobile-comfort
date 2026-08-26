@@ -74,10 +74,14 @@ remaining defects in the stock layout:
 
 - Opening the sidebar kept its 280px grid track, leaving only 80px for the
   conversation on a 360px viewport. The plugin now presents that sidebar as a
-  drawer overlay and closes it when the user taps outside it.
+  drawer overlay, closes it after a session row is selected, and closes it when
+  the user taps outside it.
 - The composer wrapped the model selector onto a second row at 360px. The
   mobile sheet keeps the composer controls in one row, lets the model label
   ellipsize, and expands the main controls to 44px touch targets.
+- Session rows keep their action menu behavior: tapping the row opens the
+  session and closes the drawer, while tapping its action button leaves the
+  drawer open for the menu.
 
 The same audit verified no document horizontal overflow, no console errors, and
 unchanged desktop behavior at 1440x900. The drawer actions remain within the
