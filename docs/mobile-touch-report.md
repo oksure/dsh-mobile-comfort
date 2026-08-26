@@ -86,6 +86,9 @@ remaining defects in the stock layout:
   native row `onClick` remains the only activation path. This avoids synthesizing
   a second click in the browser layer.
 
+The session browser also expands every workspace group on entry. A manual
+`Show less` click is respected until the sidebar is closed and opened again.
+
 The same audit verified no document horizontal overflow, no console errors, and
 unchanged desktop behavior at 1440x900. The drawer actions remain within the
 viewport at 360px and 393px.

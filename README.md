@@ -11,6 +11,7 @@ On phone and tablet browsers the dsh web UI shows four touch-specific problems:
 3. **Small touch targets.** The collapsed rail controls and composer controls are smaller than a comfortable touch target. The sheet expands them to 44px, and expands the open drawer actions to 40px.
 4. **Narrow-screen layout collapse.** The stock layout keeps the 280px sidebar as a grid column on narrow screens, leaving too little width for the composer. The sheet turns the sidebar into a mobile drawer with an overlay, keeps the composer controls on one row, closes the drawer after a session row is selected or when the user taps outside it, and preserves row-action menus.
 5. **Touch hover interception.** The session hover card can treat a touch as hover before the row click is handled. The sheet suppresses that touch-only hover path and leaves the native row click as the activation path.
+6. **Collapsed session groups.** The stock workspace browser initially shows only five sessions per workspace. The sheet expands those groups on sidebar entry, while preserving an explicit user request to show fewer until the sidebar is reopened.
 
 Desktop pointers are unaffected: both rules key off input modality (`touch-action`) or pointer class (`hover`/`pointer` media features).
 
