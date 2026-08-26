@@ -10,6 +10,7 @@ On phone and tablet browsers the dsh web UI shows four touch-specific problems:
 2. **Double-tap-zoom ambiguity.** The app ships no `touch-action` rules, so on iOS Safari rapid second taps zoom the page instead of clicking (and first clicks carry the legacy delay). The sheet sets `touch-action: manipulation` on interactive elements, leaving pinch zoom untouched.
 3. **Small touch targets.** The collapsed rail controls and composer controls are smaller than a comfortable touch target. The sheet expands them to 44px, and expands the open drawer actions to 40px.
 4. **Narrow-screen layout collapse.** The stock layout keeps the 280px sidebar as a grid column on narrow screens, leaving too little width for the composer. The sheet turns the sidebar into a mobile drawer with an overlay, keeps the composer controls on one row, closes the drawer after a session row is selected or when the user taps outside it, and preserves row-action menus.
+5. **Missing touch click fallback.** Some touch engines can deliver `touchend` without the follow-up `click` after a hover card has appeared. The sheet waits briefly for the native click and synthesizes exactly one row click only when it is missing.
 
 Desktop pointers are unaffected: both rules key off input modality (`touch-action`) or pointer class (`hover`/`pointer` media features).
 
