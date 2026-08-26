@@ -66,3 +66,19 @@ button, [role="button"], a[href], input, select, textarea, label {
 Verified A/B on the same trace harness: baseline leaves the tooltip visible ≥2.8 s after each tap; with the sheet, every mounted tooltip computes to `display: none`.
 
 Happy to provide full event traces (JSON), screenshots, or more detail if useful.
+
+## Local follow-up (2026-08-26)
+
+The CSS stopgap was extended after a live 360x800 and 393x852 audit found two
+remaining defects in the stock layout:
+
+- Opening the sidebar kept its 280px grid track, leaving only 80px for the
+  conversation on a 360px viewport. The plugin now presents that sidebar as a
+  drawer overlay and closes it when the user taps outside it.
+- The composer wrapped the model selector onto a second row at 360px. The
+  mobile sheet keeps the composer controls in one row, lets the model label
+  ellipsize, and expands the main controls to 44px touch targets.
+
+The same audit verified no document horizontal overflow, no console errors, and
+unchanged desktop behavior at 1440x900. The drawer actions remain within the
+viewport at 360px and 393px.
