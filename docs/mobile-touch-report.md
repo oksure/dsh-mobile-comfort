@@ -82,9 +82,9 @@ remaining defects in the stock layout:
 - Session rows keep their action menu behavior: tapping the row opens the
   session and closes the drawer, while tapping its action button leaves the
   drawer open for the menu.
-- A WebKit-style touch fallback covers engines that emit `touchend` but omit the
-  follow-up `click`: the native click cancels the timer, while a missing click
-  produces exactly one synthetic row click.
+- The session hover card is suppressed for touch pointerover events, so the
+  native row `onClick` remains the only activation path. This avoids synthesizing
+  a second click in the browser layer.
 
 The same audit verified no document horizontal overflow, no console errors, and
 unchanged desktop behavior at 1440x900. The drawer actions remain within the
