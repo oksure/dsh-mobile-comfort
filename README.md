@@ -23,6 +23,12 @@ dsh plugin --profile web add file:/path/to/dsh-mobile-comfort
 
 Then restart the profile (`dsh web`). Verify by loading the UI on a phone: tapping the sidebar toggle must not leave a tooltip behind.
 
+## Compatibility and disposable-profile evidence
+
+- Node.js: `>=22.0.0`.
+- DSH: `0.1.5-rc.2` is declared as compatible in `package.json`.
+- A disposable profile check passed on DSH `0.1.5-rc.2`: local install, `dsh --profile smoke --help` start, bundle-entry composition check, and uninstall. The check used an isolated `DSH_HOME` and did not modify normal profile or session state.
+
 ## Files
 
 - `lib/client.js` — browser half: injects the responsive stylesheet and the mobile drawer outside-tap handler for the lifetime of the plugin fiber (`ctx.effect`, HMR-safe disposer).
