@@ -1,7 +1,7 @@
 {
   "name": "@oksure/dsh-client-ui-mobile-comfort",
-  "version": "0.1.0",
-  "description": "Touch-device comfort fixes for the dsh web client: suppress tap-synthesized tooltip ghosts and remove double-tap-zoom ambiguity from controls.",
+  "version": "0.1.1",
+  "description": "Touch-device comfort fixes for the dsh web client: mobile sidebar overlay, touch targets, tooltip suppression, and tap behavior.",
   "license": "MIT",
   "repository": {
     "type": "git",

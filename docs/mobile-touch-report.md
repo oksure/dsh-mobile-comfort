@@ -92,3 +92,17 @@ The session browser also expands every workspace group on entry. A manual
 The same audit verified no document horizontal overflow, no console errors, and
 unchanged desktop behavior at 1440x900. The drawer actions remain within the
 viewport at 360px and 393px.
+
+## DSH 0.1.5 upgrade regression (2026-09-24)
+
+The plugin was still installed and loaded, but its drawer rules matched zero
+elements after DSH renamed the layout flag from `data-details-collapsed` to
+`data-rightbar-collapsed`. At a 393px touch viewport the live frame computed
+`280px 113px 0px` columns and the sidebar stayed `position: static`, leaving
+the conversation unusably narrow. The 0.1.1 plugin update changes the 16 CSS
+and event-handler references to the new attribute. The same live touch check
+now computes `0px 393px 0px` columns with an absolutely positioned 280px
+drawer. Tapping outside and selecting a session both close it; a synthetic
+1440px desktop check retains the normal grid. This upgrade check used Chromium
+touch emulation. WebKit was unavailable on this host for the new run, so the
+earlier WebKit findings above are not claimed as a fresh retest.
