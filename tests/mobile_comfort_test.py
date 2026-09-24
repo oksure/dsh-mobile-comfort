@@ -28,7 +28,7 @@ aside { width: 280px; }
 <div id="root"><div class="frame" data-rightbar-collapsed="true">
   <aside><button aria-label="Collapse sidebar">Close</button>
     <div role="treeitem" aria-selected="false">Session</div></aside>
-  <main><button id="outside">Outside</button></main><div></div>
+  <main><header class="wSkVaW_header">Heading</header><button id="outside">Outside</button></main><div></div>
 </div></div>'''
 
 
@@ -37,6 +37,8 @@ def mount(page):
   page.evaluate('''() => {
     window.__ModuleLoader__ = {load({factory}) { window.mobileComfort = factory(() => {}); }};
     window.closeCount = 0;
+    window.outsideCount = 0;
+    document.querySelector('#outside').addEventListener('click', () => { window.outsideCount += 1; });
     document.querySelector('button[aria-label="Collapse sidebar"]').addEventListener('click', () => {
       window.closeCount += 1;
       document.querySelector('.frame').setAttribute('data-sidebar-collapsed', 'true');
@@ -58,12 +60,27 @@ with sync_playwright() as playwright:
       const frame = document.querySelector('.frame');
       return {coarse: matchMedia('(hover: none) and (pointer: coarse)').matches,
         grid: getComputedStyle(frame).gridTemplateColumns,
-        position: getComputedStyle(frame.firstElementChild).position};
+        position: getComputedStyle(frame.firstElementChild).position,
+        center: frame.children[1].getBoundingClientRect().width};
     }''')
     assert mobile['coarse'] and mobile['grid'].split()[0] == '0px', mobile
     assert mobile['position'] == 'absolute', mobile
-    page.get_by_role('button', name='Outside').tap()
+    assert mobile['center'] == 393, mobile
+    page.touchscreen.tap(350, 400)
     assert page.evaluate('window.closeCount') == 1
+    assert page.evaluate('window.outsideCount') == 0
+    closed = page.evaluate('''() => {
+      const frame = document.querySelector('.frame');
+      frame.setAttribute('data-sidebar-collapsed', 'true');
+      return {grid: getComputedStyle(frame).gridTemplateColumns,
+        center: frame.children[1].getBoundingClientRect().width,
+        rail: frame.firstElementChild.getBoundingClientRect().height,
+        header: getComputedStyle(frame.children[1].querySelector('header')).paddingLeft};
+    }''')
+    assert closed['grid'].split()[0] == '0px' and closed['center'] == 393, closed
+    assert closed['rail'] == 72 and closed['header'] == '56px', closed
+    page.get_by_role('button', name='Collapse sidebar').tap()
+    assert page.evaluate('window.closeCount') == 2
     phone.close()
 
     desktop = browser.new_context(viewport={'width': 1440, 'height': 900})
