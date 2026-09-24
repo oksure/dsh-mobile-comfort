@@ -1,6 +1,6 @@
 {
   "name": "@oksure/dsh-client-ui-mobile-comfort",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Touch-device comfort fixes for the dsh web client: mobile sidebar overlay, touch targets, tooltip suppression, and tap behavior.",
   "license": "MIT",
   "repository": {
@@ -29,12 +29,19 @@
       "platform": "web"
     },
     "compatibility": {
-      "dsh": "0.1.5-rc.2",
+      "dsh": "0.1.5-rc.2 || 0.1.7-rc.2",
       "dshReleases": {
-        "0.1.5-rc.2": "compatible"
+        "0.1.5-rc.2": "compatible",
+        "0.1.7-rc.2": "compatible"
       },
       "dshOperations": {
         "0.1.5-rc.2": {
+          "install": "passed",
+          "start": "passed",
+          "uninstall": "passed",
+          "rollback": "unknown"
+        },
+        "0.1.7-rc.2": {
           "install": "passed",
           "start": "passed",
           "uninstall": "passed",

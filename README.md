@@ -28,8 +28,9 @@ For the drawer regression, run `python3 tests/mobile_comfort_test.py` with Playw
 ## Compatibility and disposable-profile evidence
 
 - Node.js: `>=22.0.0`.
-- DSH: `0.1.5-rc.2` is declared as compatible in `package.json`. The 0.1.2 plugin release gives the closed mobile drawer a full-width conversation and fixes its grid placement and backdrop behavior.
-- A disposable profile check passed on DSH `0.1.5-rc.2`: local install, `dsh --profile smoke --help` start, bundle-entry composition check, and uninstall. The check used an isolated `DSH_HOME` and did not modify normal profile or session state.
+- DSH: `0.1.5-rc.2` and `0.1.7-rc.2` are declared as compatible in `package.json`. The 0.1.2 plugin release gave the closed mobile drawer a full-width conversation and fixed its grid placement and backdrop behavior.
+- A disposable profile check passed on DSH `0.1.5-rc.2`: local install, `dsh --profile smoke --help` composition check, and uninstall.
+- DSH `0.1.7-rc.2` was checked in a separate isolated `DSH_HOME` using a profile created from the shipped Web template. The plugin installed and composed, the Web server started, and Chromium and WebKit phone views loaded its stylesheet with a full-width conversation. WebKit opened and dismissed the mobile drawer without click-through. The plugin then uninstalled cleanly. Neither test touched the normal profile or session state; rollback remains untested.
 
 ## Files
 
